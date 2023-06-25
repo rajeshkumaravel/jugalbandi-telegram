@@ -232,11 +232,12 @@ async def handle_query_response(update: Update, query: str, voice_message_url: s
         answer = response['answer']
         await bot.send_message(chat_id=update.effective_chat.id, text=answer)
 
-        if 'audio_output_url' in response:
-            audio_output_url = response['audio_output_url']
-            audio_request = requests.get(audio_output_url)
-            audio_data = audio_request.content
-            await bot.send_voice(chat_id=update.effective_chat.id, voice=audio_data)
+        # Bypass audio feature due to jugalbandi issue - TODO
+        # if 'audio_output_url' in response:
+        #     audio_output_url = response['audio_output_url']
+        #     audio_request = requests.get(audio_output_url)
+        #     audio_data = audio_request.content
+        #     await bot.send_voice(chat_id=update.effective_chat.id, voice=audio_data)
 
 
 def main() -> None:
